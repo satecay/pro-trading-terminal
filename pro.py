@@ -308,11 +308,11 @@ with st.expander("📊 DANH MỤC TRỰC CHIẾN & NHẬT KÝ LỆNH", expanded=
                     
                     if current_p <= float(row['stop']) and float(row['stop']) > 0:
                         is_alerting = True
-                        action_type = "🚨 CẮT LỖ"
+                        action_type = "[CẮT LỖ]"
                         alert_base_msg = f"{action_type} {symbol_item} ở mức {current_p:,.2f} ({pnl_str})!"
                     elif current_p >= float(row['target']) and float(row['target']) > 0:
                         is_alerting = True
-                        action_type = "💰 CHỐT LÃI"
+                        action_type = "[CHỐT LÃI]"
                         alert_base_msg = f"{action_type} {symbol_item} ở mức {current_p:,.2f} ({pnl_str})!"
 
                     if is_alerting:
@@ -321,14 +321,14 @@ with st.expander("📊 DANH MỤC TRỰC CHIẾN & NHẬT KÝ LỆNH", expanded=
                         should_send = False
                         
                         if last_price is None:
-                            trend_msg = "📍 (Thông báo lần đầu lọt vùng giá)"
+                            trend_msg = "(Thông báo lần đầu lọt vùng giá)"
                             should_send = True
                         elif current_p != last_price:
                             diff = current_p - last_price
                             if diff > 0:
-                                trend_msg = f"📈 HỒI LÊN: +{diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f})"
+                                trend_msg = f"[HỒI LÊN:] +{diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f})"
                             else:
-                                trend_msg = f"📉 RƠI TIẾP: {diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f})"
+                                trend_msg = f"[RƠI TIẾP:] {diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f})"
                             should_send = True
 
                         if should_send:
@@ -389,7 +389,7 @@ with st.expander("📊 DANH MỤC TRỰC CHIẾN & NHẬT KÝ LỆNH", expanded=
             # ==========================================
             # KHU VỰC BÓC TÁCH THUẾ PHÍ THEO TỪNG MÃ (ĐÃ KHÔI PHỤC)
             # ==========================================
-            st.markdown("### 🔍 Phân tích Lãi/Lỗ Thực Nhận (Sau Thuế Phí)")
+            st.markdown("### Phân tích Lãi/Lỗ Thực Nhận (Sau Thuế Phí)")
             list_ma = list(portfolio_details.keys())
             
             if list_ma:
@@ -586,6 +586,7 @@ else:
         )
         send_telegram_alert(plan_msg)
         st.toast(f"✅ Đã gửi kế hoạch {symbol} vào Telegram của bạn!", icon="🚀")
+
 
 
 
