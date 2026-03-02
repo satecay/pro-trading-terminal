@@ -321,14 +321,14 @@ with st.expander("📊 DANH MỤC TRỰC CHIẾN & NHẬT KÝ LỆNH", expanded=
                         should_send = False
                         
                         if last_price is None:
-                            trend_msg = "📍 (Thông báo lần đầu lọt vùng giá)"
+                            trend_msg = "(Thông báo lần đầu lọt vùng giá)"
                             should_send = True
                         elif current_p != last_price:
                             diff = current_p - last_price
                             if diff > 0:
-                                trend_msg = f"📈 HỒI LÊN: +{diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f})"
+                                trend_msg = f"📈 HỒI LÊN: +{diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f}) Giá mua {buy_p:,.2f}" # Sua cho Gia mua
                             else:
-                                trend_msg = f"📉 RƠI TIẾP: {diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f})"
+                                trend_msg = f"📉 RƠI TIẾP: {diff:,.2f} giá (Từ {last_price:,.2f} ➡️ {current_p:,.2f}) Giá mua {buy_p:,.2f}"
                             should_send = True
 
                         if should_send:
@@ -586,6 +586,7 @@ else:
         )
         send_telegram_alert(plan_msg)
         st.toast(f"✅ Đã gửi kế hoạch {symbol} vào Telegram của bạn!", icon="🚀")
+
 
 
 
