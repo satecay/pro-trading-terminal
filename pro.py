@@ -309,11 +309,11 @@ with st.expander("📊 DANH MỤC TRỰC CHIẾN & NHẬT KÝ LỆNH", expanded=
                     if current_p <= float(row['stop']) and float(row['stop']) > 0:
                         is_alerting = True
                         action_type = "🚨 CẮT LỖ"
-                        alert_base_msg = f"{action_type} {symbol_item} ở mức {current_p:,.2f} ({pnl_str})!"
+                        alert_base_msg = f"{action_type} {symbol_item} ở mức {current_p:,.2f} ({pnl_str}) GIÁ MUA: {buy_p:,.2f}!" #them o day
                     elif current_p >= float(row['target']) and float(row['target']) > 0:
                         is_alerting = True
                         action_type = "💰 CHỐT LÃI"
-                        alert_base_msg = f"{action_type} {symbol_item} ở mức {current_p:,.2f} ({pnl_str})!"
+                        alert_base_msg = f"{action_type} {symbol_item} ở mức {current_p:,.2f} ({pnl_str}) GIÁ MUA: {buy_p:,.2f}!"
 
                     if is_alerting:
                         last_price = alert_memory.get(symbol_item)
@@ -586,6 +586,7 @@ else:
         )
         send_telegram_alert(plan_msg)
         st.toast(f"✅ Đã gửi kế hoạch {symbol} vào Telegram của bạn!", icon="🚀")
+
 
 
 
