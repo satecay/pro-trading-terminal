@@ -23,7 +23,7 @@ with col_toggle:
     # ĐÂY CHÍNH LÀ NÚT BẠN CẦN TÌM
     auto_alert = st.checkbox(
         "🔔 Tự động báo siêu phẩm", 
-        value=False, 
+        value=True, 
         key="enable_auto_telegram", # Thêm key để Streamlit không nhầm lẫn
         help="Bật để nhận tin nhắn tự động khi có mã mới biến động mạnh."
     )
